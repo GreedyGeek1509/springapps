@@ -10,6 +10,7 @@
   <version>1.0-SNAPSHOT</version>
   <modules>
     <module>annotation-di</module>
+    <module>xml-di</module>
   </modules>
 
   <name>spring-apps</name>
