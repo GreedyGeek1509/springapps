@@ -7,10 +7,7 @@ import org.springframework.format.FormatterRegistry;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.servlet.ViewResolver;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.resource.PathResourceResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
@@ -20,10 +17,10 @@ import java.util.List;
 @Configuration
 @ComponentScan({"com.sriram.spring.controller"})
 public class WebMvcConfigurerImpl implements WebMvcConfigurer {
-    @Bean
-    public ViewResolver viewResolver() {
-        return new InternalResourceViewResolver("/WEB-INF/views/", "*.jsp");
-    }
+//    @Bean
+//    public ViewResolver viewResolver() {
+//        return new InternalResourceViewResolver("/WEB-INF/views/", "*.jsp");
+//    }
 
     /** Static resource locations including themes*/
     @Override
@@ -33,6 +30,11 @@ public class WebMvcConfigurerImpl implements WebMvcConfigurer {
                 .setCachePeriod(3600)
                 .resourceChain(true)
                 .addResolver(new PathResourceResolver());
+    }
+
+    @Override
+    public void configureViewResolvers(ViewResolverRegistry registry) {
+        registry.viewResolver(new InternalResourceViewResolver("/WEB-INF/views/", "*.jsp"));
     }
 
     @Override
