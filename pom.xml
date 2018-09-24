@@ -11,6 +11,7 @@
   <modules>
     <module>annotation-di</module>
     <module>xml-di</module>
+    <module>mvc-rest</module>
   </modules>
 
   <name>spring-apps</name>
@@ -21,23 +22,55 @@
     <maven.compiler.target>1.8</maven.compiler.target>
     <spring.version>5.0.9.RELEASE</spring.version>
     <lombok.version>1.18.2</lombok.version>
+    <logback.version>1.2.3</logback.version>
+    <slf4j.api.version>1.7.25</slf4j.api.version>
+    <aspectj.version>1.5.4</aspectj.version>
+    <servlet.api.version>4.0.1</servlet.api.version>
+    <jsp-api.version>2.3.3</jsp-api.version>
+    <jstl.version>1.2</jstl.version>
+    <jackson.databind-version>2.9.6</jackson.databind-version>
     <junit.version>4.11</junit.version>
   </properties>
 
   <dependencies>
-    <!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
+
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-context</artifactId>
       <version>${spring.version}</version>
     </dependency>
-    <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-webmvc</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <version>${logback.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>${slf4j.api.version}</version>
+    </dependency>
+
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
       <version>${lombok.version}</version>
       <scope>provided</scope>
     </dependency>
+
+    <dependency>
+      <groupId>org.aspectj</groupId>
+      <artifactId>aspectjrt</artifactId>
+      <version>${aspectj.version}</version>
+    </dependency>
+
     <!-- Tests-->
     <dependency>
       <groupId>junit</groupId>
@@ -48,6 +81,7 @@
   </dependencies>
 
   <build>
+    <finalName>${project.artifactId}</finalName>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
         <plugin>
