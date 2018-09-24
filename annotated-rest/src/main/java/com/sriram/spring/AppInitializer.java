@@ -1,5 +1,6 @@
 package com.sriram.spring;
 
+import com.sriram.spring.configuration.MarshallingConfig;
 import com.sriram.spring.configuration.WebConfig;
 import com.sriram.spring.configuration.WebMvcConfigurerImpl;
 import org.springframework.web.WebApplicationInitializer;
@@ -16,6 +17,7 @@ public class AppInitializer implements WebApplicationInitializer {
     public void onStartup(ServletContext container) throws ServletException {
         AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
         //context.register(WebConfig.class);
+        context.register(MarshallingConfig.class);
         context.register(WebMvcConfigurerImpl.class);
         container.addListener(new ContextLoaderListener(context));
 

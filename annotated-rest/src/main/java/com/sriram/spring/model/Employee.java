@@ -6,12 +6,14 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.util.Date;
 
 @Getter
 @Setter
 @ToString
+@XmlRootElement
 public class Employee implements Serializable {
 
     private static final long serialVersionUID = -7788619177798333712L;

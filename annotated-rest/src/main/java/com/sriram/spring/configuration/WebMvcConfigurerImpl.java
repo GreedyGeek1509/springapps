@@ -1,12 +1,11 @@
 package com.sriram.spring.configuration;
 
-import org.springframework.context.annotation.Bean;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.format.FormatterRegistry;
 import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.web.servlet.ViewResolver;
+import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.resource.PathResourceResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
@@ -16,11 +15,16 @@ import java.util.List;
 @EnableWebMvc
 @Configuration
 @ComponentScan({"com.sriram.spring.controller"})
+@Component
 public class WebMvcConfigurerImpl implements WebMvcConfigurer {
-//    @Bean
-//    public ViewResolver viewResolver() {
-//        return new InternalResourceViewResolver("/WEB-INF/views/", "*.jsp");
-//    }
+
+    @Autowired
+    @Qualifier("jsonConverter")
+    private HttpMessageConverter jsonConverter;
+
+    @Autowired
+    @Qualifier("xmlConverter")
+    private HttpMessageConverter xmlConverter;
 
     /** Static resource locations including themes*/
     @Override
@@ -39,6 +43,7 @@ public class WebMvcConfigurerImpl implements WebMvcConfigurer {
 
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
-        converters.add(new MappingJackson2HttpMessageConverter());
+        converters.add(jsonConverter);
+        converters.add(xmlConverter);
     }
 }
