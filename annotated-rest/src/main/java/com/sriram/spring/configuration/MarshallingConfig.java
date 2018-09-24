@@ -10,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @EnableWebMvc
 @Configuration
-@ComponentScan(basePackageClasses = {WebMvcConfigurerImpl.class})
+@ComponentScan(basePackageClasses = {WebMvcConfiguration.class})
 public class MarshallingConfig {
     @Bean(name = "jsonConverter")
     public HttpMessageConverter jsonConverter() {

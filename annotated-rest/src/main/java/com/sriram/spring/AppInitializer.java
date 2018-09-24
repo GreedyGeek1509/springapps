@@ -1,8 +1,7 @@
 package com.sriram.spring;
 
 import com.sriram.spring.configuration.MarshallingConfig;
-import com.sriram.spring.configuration.WebConfig;
-import com.sriram.spring.configuration.WebMvcConfigurerImpl;
+import com.sriram.spring.configuration.WebMvcConfiguration;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
@@ -18,7 +17,7 @@ public class AppInitializer implements WebApplicationInitializer {
         AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
         //context.register(WebConfig.class);
         context.register(MarshallingConfig.class);
-        context.register(WebMvcConfigurerImpl.class);
+        context.register(WebMvcConfiguration.class);
         container.addListener(new ContextLoaderListener(context));
 
         ServletRegistration.Dynamic dispatcher = container.addServlet("mvc", new DispatcherServlet(context));

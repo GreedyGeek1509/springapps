@@ -16,7 +16,7 @@ import java.util.List;
 @Configuration
 @ComponentScan({"com.sriram.spring.controller"})
 @Component
-public class WebMvcConfigurerImpl implements WebMvcConfigurer {
+public class WebMvcConfiguration implements WebMvcConfigurer {
 
     @Autowired
     @Qualifier("jsonConverter")
