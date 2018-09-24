@@ -12,6 +12,7 @@
     <module>annotation-di</module>
     <module>xml-di</module>
     <module>mvc-rest</module>
+    <module>annotated-rest</module>
   </modules>
 
   <name>spring-apps</name>
@@ -104,6 +105,10 @@
         <plugin>
           <artifactId>maven-jar-plugin</artifactId>
           <version>3.0.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-war-plugin</artifactId>
+          <version>3.2.0</version>
         </plugin>
         <plugin>
           <artifactId>maven-install-plugin</artifactId>
